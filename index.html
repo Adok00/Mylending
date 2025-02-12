@@ -6,6 +6,7 @@
     <title>Создание современных сайтов | Профессиональная разработка</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
                 .service-card h3 {
             font-size: 24px;
@@ -308,6 +309,30 @@
             .section-title {
                 font-size: 30px;
             }
+         .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hover-up {
+            transition: transform 0.3s ease;
+        }
+        .hover-up:hover {
+            transform: translateY(-5px);
+        }
+        .gradient-border {
+            position: relative;
+            border: double 2px transparent;
+            border-radius: 1rem;
+            background-image: linear-gradient(white, white),
+                            linear-gradient(135deg, #2563eb, #3b82f6);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
         }
     </style>
 </head>
@@ -365,80 +390,264 @@
                     <img src="https://i.postimg.cc/HLdXNxMJ/image.png" alt="Project 1">
                 </div>
                 <div class="portfolio-item">
-                    <img src="/api/placeholder/400/320" alt="Project 2">
+                    <img src="https://i.postimg.cc/J4JTh6TF/image.png" alt="Project 2">
                 </div>
                 <div class="portfolio-item">
-                    <img src="/api/placeholder/400/320" alt="Project 3">
+                    <img src="https://i.postimg.cc/KYcQJZZX/image.png" alt="Project 3">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Тарифы</h2>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <h3>Базовый</h3>
-                    <div class="price">30 000 ₽</div>
-                    <ul>
-                        <li>До 5 страниц</li>
-                        <li>Адаптивный дизайн</li>
-                        <li>SEO-оптимизация</li>
-                        <li>Поддержка 1 месяц</li>
-                    </ul>
-                    <a href="#contact" class="cta-button">Заказать</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Стандарт</h3>
-                    <div class="price">60 000 ₽</div>
-                    <ul>
-                        <li>До 10 страниц</li>
-                        <li>Уникальный дизайн</li>
-                        <li>SEO-оптимизация</li>
-                        <li>Поддержка 3 месяца</li>
-                    </ul>
-                    <a href="#contact" class="cta-button">Заказать</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Премиум</h3>
-                    <div class="price">100 000 ₽</div>
-                    <ul>
-                        <li>Неограниченное количество страниц</li>
-                        <li>Премиум дизайн</li>
-                        <li>Расширенная SEO-оптимизация</li>
-                        <li>Поддержка 6 месяцев</li>
-                    </ul>
-                    <a href="#contact" class="cta-button">Заказать</a>
+    <main class="pt-24">
+        <!-- Hero секция -->
+        <section class="container mx-auto px-4 py-20 text-center">
+            <h1 class="text-6xl font-bold mb-6 gradient-text">Создаем сайты, которые продают</h1>
+            <p class="text-xl mb-10 text-gray-700">Разработка современных сайтов под ключ с гарантией результата</p>
+            <button class="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-8 py-4 rounded-full hover:shadow-lg transition-all hover-up">
+                Заказать сайт
+            </button>
+        </section>
+
+        <!-- Тарифы -->
+        <section id="цены" class="py-20 bg-gradient-to-b from-blue-50 to-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Тарифы</h2>
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Базовый тариф -->
+                    <div class="gradient-border bg-white p-8 hover-up hover:shadow-xl transition-all">
+                        <h3 class="text-2xl font-bold mb-6 gradient-text">Базовый</h3>
+                        <div class="flex items-baseline mb-8">
+                            <span class="text-4xl font-bold text-blue-600">130 000</span>
+                            <span class="text-2xl font-semibold text-blue-600 ml-2">₸</span>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                До 5 страниц
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Адаптивный дизайн
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                SEO-оптимизация
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Поддержка 1 месяц
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-full hover:shadow-lg transition-all">
+                            Заказать
+                        </button>
+                    </div>
+
+                    <!-- Стандарт тариф -->
+                    <div class="gradient-border bg-white p-8 hover-up hover:shadow-xl transition-all transform scale-105">
+                        <div class="absolute top-0 right-0 bg-blue-500 text-white px-4 py-1 rounded-bl-lg rounded-tr-lg">
+                            Популярный
+                        </div>
+                        <h3 class="text-2xl font-bold mb-6 gradient-text">Стандарт</h3>
+                        <div class="flex items-baseline mb-8">
+                            <span class="text-4xl font-bold text-blue-600">260 000</span>
+                            <span class="text-2xl font-semibold text-blue-600 ml-2">₸</span>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                До 10 страниц
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Уникальный дизайн
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                SEO-оптимизация
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Поддержка 3 месяца
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-full hover:shadow-lg transition-all">
+                            Заказать
+                        </button>
+                    </div>
+
+                    <!-- Премиум тариф -->
+                    <div class="gradient-border bg-white p-8 hover-up hover:shadow-xl transition-all">
+                        <h3 class="text-2xl font-bold mb-6 gradient-text">Премиум</h3>
+                        <div class="flex items-baseline mb-8">
+                            <span class="text-4xl font-bold text-blue-600">430 000</span>
+                            <span class="text-2xl font-semibold text-blue-600 ml-2">₸</span>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Неограниченное количество страниц
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Премиум дизайн
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Расширенная SEO-оптимизация
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Поддержка 6 месяцев
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-full hover:shadow-lg transition-all">
+                            Заказать
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">Связаться с нами</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" placeholder="Ваше имя">
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input type="tel" placeholder="Телефон">
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Ваше сообщение" rows="5"></textarea>
-                </div>
-                <button type="submit" class="cta-button">Отправить</button>
-            </form>
-        </div>
-    </section>
+        <!-- Контактная форма с градиентом -->
+      <section id="контакты" class="py-20 bg-gradient-to-t from-gray-100 to-white">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Свяжитесь с нами
+        </h2>
+        <p class="text-xl mb-10 text-gray-700">
+            Обсудим ваш проект и подготовим индивидуальное предложение
+        </p>
+        <form class="max-w-md mx-auto space-y-6" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="34aad382-8a3f-4940-b92b-8c0e9f4fc7b5">
 
-    <footer>
-        <div class="container">
-            <p>© 2025 WebStudio. Все права защищены.</p>
+            <div class="flex flex-col">
+                <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Ваше имя"
+                    class="px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-200 bg-white shadow-sm"
+                >
+            </div>
+
+            <div class="flex flex-col">
+                <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="Ваш email"
+                    class="px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-200 bg-white shadow-sm"
+                >
+            </div>
+
+            <div class="flex flex-col">
+                <textarea
+                    name="message"
+                    required
+                    placeholder="Ваше сообщение"
+                    rows="4"
+                    class="px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-200 bg-white shadow-sm resize-none"
+                ></textarea>
+            </div>
+
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+            <button
+                type="submit"
+                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transform hover:scale-105 transition duration-200 shadow-lg"
+            >
+                Отправить сообщение
+            </button>
+        </form>
+    </div>
+</section>
+    </main>
+
+
+    <!-- Футер с градиентом -->
+    <footer class="bg-gradient-to-b from-gray-800 to-gray-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Контакты -->
+                <div class="text-center md:text-left hover-up">
+                    <h3 class="text-2xl font-semibold mb-6 gradient-text">Контакты</h3>
+                    <div class="space-y-4">
+                       <p class="flex items-center justify-center md:justify-start hover:text-blue-400 transition-colors">
+                            <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 2H4C2.9 2 2 2.9 2 4V20C2 21.1 2.9 22 4 22H20C21.1 22 22 21.1 22 20V4C22 2.9 21.1 2 20 2ZM8 6H16V8H8V6ZM8 10H16V12H8V10ZM8 14H16V16H8V14Z"/>
+                            </svg>
+                            +7 (777) 777-77-77
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Социальные сети -->
+                <div class="text-center hover-up">
+                    <h3 class="text-2xl font-semibold mb-6 gradient-text">Мы в соцсетях</h3>
+                    <div class="flex justify-center space-x-6">
+                        <!-- Instagram с анимацией -->
+                        <a href="https://www.instagram.com/adik_oow/" class="transform hover:scale-110 transition-all hover:text-pink-500">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <!-- Telegram с анимацией -->
+                        <a href="https://t.me/Zadrot_ik" class="transform hover:scale-110 transition-all hover:text-blue-400">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+                            </svg>
+                        </a>
+                        <!-- WhatsApp с анимацией -->
+                        <a href="https://wa.me/77786484486?text=Привет,%20мне%20нужна%20консультация" class="transform hover:scale-110 transition-all hover:text-green-500">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Адрес -->
+                <div class="text-center md:text-right hover-up">
+                    <h3 class="text-2xl font-semibold mb-6 gradient-text">Адрес</h3>
+                    <p class="hover:text-blue-400 transition-colors">Республика Казахстан</p>
+                    <p class="hover:text-blue-400 transition-colors">г. Алматы, ул. Абая 150</p>
+                    <p class="hover:text-blue-400 transition-colors">БЦ "Кристалл", офис 509</p>
+                </div>
+            </div>
+
+            <!-- Разделительная линия с градиентом -->
+            <div class="my-8 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+
+            <!-- Копирайт -->
+            <div class="text-center text-gray-400">
+                <p>© 2025 WebStudio. Все права защищены.</p>
+            </div>
         </div>
     </footer>
     <script>
