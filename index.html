@@ -3,774 +3,1233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Создание современных сайтов | Профессиональная разработка</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>ПремиумДвери - Качественные металлические двери</title>
     <style>
-                .service-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #2d3436;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e67e22;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --text-color: #333;
+            --white-color: #fff;
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
         }
 
         body {
-            background-color: #f8f9fa;
-            color: #2d3436;
+            color: var(--text-color);
             line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style-type: none;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
-        /* Header styles */
+        /* Header Styles */
         header {
-            background-color: #ffffff;
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
+            background-color: var(--white-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
         }
 
-        nav {
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
         }
 
         .logo {
             font-size: 24px;
-            font-weight: bold;
-            color: #2d3436;
+            font-weight: 700;
+            color: var(--primary-color);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
+        .logo span {
+            color: var(--secondary-color);
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #2d3436;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #0984e3;
-        }
-
-        /* Hero section with background slider */
-        .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
-            color: white;
-            text-align: center;
+        .contact-info {
             display: flex;
             align-items: center;
         }
 
-        .hero-content {
+        .phone {
+            font-size: 18px;
+            font-weight: 700;
+            margin-right: 20px;
+        }
+
+        .phone i {
+            color: var(--secondary-color);
+            margin-right: 5px;
+        }
+
+        .button {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #d35400;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-menu li {
             position: relative;
-            z-index: 2;
-            width: 100%;
         }
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            font-weight: 800;
+        .nav-menu li a {
+            display: block;
+            color: var(--white-color);
+            padding: 15px 20px;
+            transition: background-color 0.3s;
         }
 
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            opacity: 0.9;
+        .nav-menu li a:hover {
+            background-color: var(--dark-color);
         }
 
-        .background-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+        /* Hero Section */
+        .hero {
+            background-image: url('/api/placeholder/1200/500');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
+            color: var(--white-color);
+            padding: 100px 0;
+            position: relative;
         }
 
-        .slide.active {
-            opacity: 1;
-        }
-
-        .slide::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background-color: #00b894;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Services section */
-        .services {
-            padding: 80px 0;
-            background-color: white;
+        .hero-content {
             position: relative;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+            background-color: var(--light-color);
         }
 
         .section-title {
             text-align: center;
             font-size: 36px;
-            margin-bottom: 60px;
-            color: #2d3436;
+            margin-bottom: 40px;
+            color: var(--primary-color);
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .service-card {
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #2d3436;
-        }
-
-        /* Portfolio section */
-        .portfolio {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-            position: relative;
-        }
-
-        .portfolio-grid {
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .portfolio-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
+        .feature-item {
+            background-color: var(--white-color);
+            border-radius: 5px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .portfolio-item img {
+        .feature-icon {
+            font-size: 48px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 60px 0;
+        }
+
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .category-button {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-button.active, .category-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white-color);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
             width: 100%;
             height: 250px;
             object-fit: cover;
         }
 
-        /* Pricing section */
-        .pricing {
-            padding: 80px 0;
-            background-color: white;
-            position: relative;
+        .product-details {
+            padding: 20px;
         }
 
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+        .product-title {
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
-        .pricing-card {
-            padding: 40px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-5px);
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
         }
 
         .price {
-            font-size: 48px;
+            font-size: 24px;
             font-weight: 700;
-            margin: 20px 0;
-            color: #0984e3;
+            color: var(--primary-color);
         }
 
-        .pricing-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
+        .discount {
+            font-size: 16px;
+            color: #888;
+            text-decoration: line-through;
         }
 
-        .pricing-card li {
-            margin: 10px 0;
+        /* About Section */
+        .about {
+            padding: 60px 0;
+            background-color: var(--light-color);
         }
 
-        /* Contact section */
-        .contact {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-            position: relative;
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
         }
 
-        .contact-form {
-            max-width: 600px;
+        .about-image {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 60px 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            font-size: 24px;
+            font-weight: 700;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+
+        .reviews-slider {
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .form-group {
+        .review-card {
+            background-color: var(--white-color);
+            border-radius: 5px;
+            padding: 30px;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-text {
+            font-style: italic;
             margin-bottom: 20px;
         }
 
-        input, textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ddd;
+        .review-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .author-name {
+            font-weight: 700;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .contact-map {
+            height: 400px;
             border-radius: 5px;
-            font-size: 16px;
+            overflow: hidden;
         }
 
         /* Footer */
         footer {
-            background-color: #2d3436;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-            position: relative;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 60px 0 30px;
         }
 
-        /* Responsive Design */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--secondary-color);
+        }
+
+        .footer-links h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 50px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .header-top {
+                flex-direction: column;
+                text-align: center;
             }
 
-            .hero h1 {
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
+
+            .phone {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+            }
+
+            .hero-title {
                 font-size: 36px;
             }
 
-            .section-title {
-                font-size: 30px;
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
             }
-         .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hover-up {
-            transition: transform 0.3s ease;
-        }
-        .hover-up:hover {
-            transform: translateY(-5px);
-        }
-        .gradient-border {
-            position: relative;
-            border: double 2px transparent;
-            border-radius: 1rem;
-            background-image: linear-gradient(white, white),
-                            linear-gradient(135deg, #2563eb, #3b82f6);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-        }
+
+            .about-image {
+                order: -1;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <nav class="container">
-            <div class="logo">WebStudio</div>
-            <div class="nav-links">
-                <a href="#services">Услуги</a>
-                <a href="#portfolio">Портфолио</a>
-                <a href="#pricing">Цены</a>
-                <a href="#contact">Контакты</a>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">Премиум<span>Двери</span></div>
+                <div class="contact-info">
+                    <div class="phone">+7 (495) 123-45-67</div>
+                    <a href="#contact" class="button">Заказать звонок</a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ul class="nav-menu">
+                    <li><a href="#products">Каталог</a></li>
+                    <li><a href="#about">О компании</a></li>
+                    <li><a href="#process">Как заказать</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
             </div>
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="background-slider">
-            <div class="slide active" style="background-image: url('https://avatars.mds.yandex.net/i?id=31f5baa24994365c4abfaf5d22659cba_l-12795182-images-thumbs&n=13')"></div>
-            <div class="slide" style="background-image: url('https://i0.wp.com/p-gp.ru/images/slider/slide5025.webp?ssl=1')"></div>
-            <div class="slide" style="background-image: url('https://avatars.mds.yandex.net/i?id=5dda2073f9086807554f30bb62ff387e_l-5333204-images-thumbs&n=13')"></div>
-        </div>
-        <div class="hero-content container">
-            <h1>Создаем современные сайты для вашего бизнеса</h1>
-            <p>Профессиональная разработка сайтов с уникальным дизайном и высокой конверсией</p>
-            <a href="#contact" class="cta-button">Получить консультацию</a>
-        </div>
-    </section>
-
-    <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Наши услуги</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                <h3>🎯 Лендинг</h3>
-                <p>Одностраничные сайты для презентации ваших товаров и услуг с высокой конверсией.</p>
-            </div>
-            <div class="service-card">
-                <h3>🏢 Корпоративный сайт</h3>
-                <p>Многостраничные сайты для компаний с полным представлением информации о бизнесе.</p>
-            </div>
-            <div class="service-card">
-                <h3>🛍️ Интернет-магазин</h3>
-                <p>Функциональные онлайн-магазины с удобным каталогом и системой оплаты.</p>
-            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">Металлические двери премиум-класса</h1>
+                <p class="hero-description">Безопасность и стиль для вашего дома. Более 1000 моделей в наличии. Гарантия 10 лет.</p>
+                <a href="#products" class="button">Смотреть каталог</a>
             </div>
         </div>
     </section>
 
-    <section class="portfolio" id="portfolio">
+    <!-- Features Section -->
+    <section class="features" id="features">
         <div class="container">
-            <h2 class="section-title">Наши работы</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://i.postimg.cc/HLdXNxMJ/image.png" alt="Project 1">
+            <h2 class="section-title">Наши преимущества</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🏆</div>
+                    <h3 class="feature-title">Высокое качество</h3>
+                    <p>Используем только проверенные материалы и фурнитуру от лучших производителей.</p>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://i.postimg.cc/J4JTh6TF/image.png" alt="Project 2">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Быстрая установка</h3>
+                    <p>Бесплатная доставка и профессиональная установка в день заказа или на следующий день.</p>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://i.postimg.cc/KYcQJZZX/image.png" alt="Project 3">
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Доступные цены</h3>
+                    <p>Работаем напрямую с производителями, поэтому наши цены ниже рыночных на 15-20%.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <main class="pt-24">
-        <!-- Hero секция -->
-        <section class="container mx-auto px-4 py-20 text-center">
-            <h1 class="text-6xl font-bold mb-6 gradient-text">Создаем сайты, которые продают</h1>
-            <p class="text-xl mb-10 text-gray-700">Разработка современных сайтов под ключ с гарантией результата</p>
-            <button class="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-8 py-4 rounded-full hover:shadow-lg transition-all hover-up">
-                Заказать сайт
-            </button>
-        </section>
-
-        <!-- Тарифы -->
-        <section id="цены" class="py-20 bg-gradient-to-b from-blue-50 to-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Тарифы</h2>
-                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <!-- Базовый тариф -->
-                    <div class="gradient-border bg-white p-8 hover-up hover:shadow-xl transition-all">
-                        <h3 class="text-2xl font-bold mb-6 gradient-text">Базовый</h3>
-                        <div class="flex items-baseline mb-8">
-                            <span class="text-4xl font-bold text-blue-600">130 000</span>
-                            <span class="text-2xl font-semibold text-blue-600 ml-2">₸</span>
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Каталог дверей</h2>
+            <div class="product-categories">
+                <div class="category-button active">Все двери</div>
+                <div class="category-button">Входные</div>
+                <div class="category-button">Межкомнатные</div>
+                <div class="category-button">Противопожарные</div>
+                <div class="category-button">Для квартиры</div>
+                <div class="category-button">Для частного дома</div>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="/api/placeholder/300/250" alt="Дверь Стандарт" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-title">Модель "Стандарт"</h3>
+                        <p>Надежная стальная дверь с шумоизоляцией и двумя контурами уплотнения.</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">19 990 ₽</span>
+                                <span class="discount">24 990 ₽</span>
+                            </div>
+                            <a href="product-details.html" class="button" onclick="showProductDetails('Стандарт'); return false;">Подробнее</a>
                         </div>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                До 5 страниц
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                Адаптивный дизайн
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                SEO-оптимизация
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                Поддержка 1 месяц
-                            </li>
-                        </ul>
-                        <button class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-full hover:shadow-lg transition-all">
-                            Заказать
-                        </button>
                     </div>
-
-                    <!-- Стандарт тариф -->
-                    <div class="gradient-border bg-white p-8 hover-up hover:shadow-xl transition-all transform scale-105">
-                        <div class="absolute top-0 right-0 bg-blue-500 text-white px-4 py-1 rounded-bl-lg rounded-tr-lg">
-                            Популярный
+                </div>
+                <div class="product-card">
+                    <img src="/api/placeholder/300/250" alt="Дверь Комфорт" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-title">Модель "Комфорт"</h3>
+                        <p>Утепленная стальная дверь с повышенной шумоизоляцией и тремя контурами уплотнения.</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">24 990 ₽</span>
+                                <span class="discount">29 990 ₽</span>
+                            </div>
+                            <a href="product-details.html" class="button" onclick="showProductDetails('Комфорт'); return false;">Подробнее</a>
                         </div>
-                        <h3 class="text-2xl font-bold mb-6 gradient-text">Стандарт</h3>
-                        <div class="flex items-baseline mb-8">
-                            <span class="text-4xl font-bold text-blue-600">260 000</span>
-                            <span class="text-2xl font-semibold text-blue-600 ml-2">₸</span>
-                        </div>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                До 10 страниц
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                Уникальный дизайн
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                SEO-оптимизация
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                Поддержка 3 месяца
-                            </li>
-                        </ul>
-                        <button class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-full hover:shadow-lg transition-all">
-                            Заказать
-                        </button>
                     </div>
-
-                    <!-- Премиум тариф -->
-                    <div class="gradient-border bg-white p-8 hover-up hover:shadow-xl transition-all">
-                        <h3 class="text-2xl font-bold mb-6 gradient-text">Премиум</h3>
-                        <div class="flex items-baseline mb-8">
-                            <span class="text-4xl font-bold text-blue-600">430 000</span>
-                            <span class="text-2xl font-semibold text-blue-600 ml-2">₸</span>
+                </div>
+                <div class="product-card">
+                    <img src="/api/placeholder/300/250" alt="Дверь Премиум" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-title">Модель "Премиум"</h3>
+                        <p>Премиальная стальная дверь с терморазрывом, четырьмя контурами уплотнения и бронированием.</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">34 990 ₽</span>
+                                <span class="discount">39 990 ₽</span>
+                            </div>
+                            <a href="product-details.html" class="button" onclick="showProductDetails('Премиум'); return false;">Подробнее</a>
                         </div>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                Неограниченное количество страниц
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                Премиум дизайн
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                Расширенная SEO-оптимизация
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                Поддержка 6 месяцев
-                            </li>
-                        </ul>
-                        <button class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-full hover:shadow-lg transition-all">
-                            Заказать
-                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/api/placeholder/300/250" alt="Дверь Люкс" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-title">Модель "Люкс"</h3>
+                        <p>Эксклюзивная модель с отделкой премиум-класса и усиленной системой безопасности.</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">44 990 ₽</span>
+                                <span class="discount">49 990 ₽</span>
+                            </div>
+                            <a href="product-details.html" class="button" onclick="showProductDetails('Люкс'); return false;">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/api/placeholder/300/250" alt="Дверь Эконом" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-title">Модель "Эконом"</h3>
+                        <p>Практичная стальная дверь с базовой комплектацией по доступной цене.</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">14 990 ₽</span>
+                                <span class="discount">17 990 ₽</span>
+                            </div>
+                            <a href="product-details.html" class="button" onclick="showProductDetails('Эконом'); return false;">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/api/placeholder/300/250" alt="Дверь Классик" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-title">Модель "Классик"</h3>
+                        <p>Классическая стальная дверь с МДФ отделкой и хорошей шумоизоляцией.</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">21 990 ₽</span>
+                                <span class="discount">26 990 ₽</span>
+                            </div>
+                            <a href="product-details.html" class="button" onclick="showProductDetails('Классик'); return false;">Подробнее</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Контактная форма с градиентом -->
-      <section id="контакты" class="py-20 bg-gradient-to-t from-gray-100 to-white">
-    <div class="container mx-auto px-4 text-center">
-        <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Свяжитесь с нами
-        </h2>
-        <p class="text-xl mb-10 text-gray-700">
-            Обсудим ваш проект и подготовим индивидуальное предложение
-        </p>
-        <form class="max-w-md mx-auto space-y-6" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="34aad382-8a3f-4940-b92b-8c0e9f4fc7b5">
-
-            <div class="flex flex-col">
-                <input
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="Ваше имя"
-                    class="px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-200 bg-white shadow-sm"
-                >
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>О компании ПремиумДвери</h2>
+                    <p>Наша компания занимается продажей и установкой металлических дверей более 10 лет. За это время мы установили более 50 000 дверей в Москве и Московской области.</p>
+                    <p>Мы сотрудничаем только с проверенными производителями, которые гарантируют высокое качество своей продукции. Наши специалисты имеют большой опыт работы и регулярно проходят обучение.</p>
+                    <p>Мы предлагаем широкий выбор моделей дверей различных ценовых категорий, чтобы каждый клиент мог выбрать дверь, соответствующую его требованиям и бюджету.</p>
+                </div>
+                <img src="/api/placeholder/500/300" alt="О компании" class="about-image">
             </div>
+        </div>
+    </section>
 
-            <div class="flex flex-col">
-                <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="Ваш email"
-                    class="px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-200 bg-white shadow-sm"
-                >
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2 class="section-title">Как заказать</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Выбор двери</h3>
+                    <p>Выберите модель двери из нашего каталога или оставьте заявку на бесплатную консультацию.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Замер</h3>
+                    <p>Наш специалист приедет к вам, произведет точные замеры и поможет с выбором.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Оформление заказа</h3>
+                    <p>Заключаем договор, выбираем удобный способ оплаты и согласовываем дату доставки и установки.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Установка</h3>
+                    <p>В назначенный день наши мастера доставят и установят дверь с соблюдением всех технологий.</p>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="flex flex-col">
-                <textarea
-                    name="message"
-                    required
-                    placeholder="Ваше сообщение"
-                    rows="4"
-                    class="px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-200 bg-white shadow-sm resize-none"
-                ></textarea>
-            </div>
-
-            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-            <button
-                type="submit"
-                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transform hover:scale-105 transition duration-200 shadow-lg"
-            >
-                Отправить сообщение
-            </button>
-        </form>
-    </div>
-</section>
-    </main>
-
-
-    <!-- Футер с градиентом -->
-    <footer class="bg-gradient-to-b from-gray-800 to-gray-900 text-white py-16">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-12">
-                <!-- Контакты -->
-                <div class="text-center md:text-left hover-up">
-                    <h3 class="text-2xl font-semibold mb-6 gradient-text">Контакты</h3>
-                    <div class="space-y-4">
-                       <p class="flex items-center justify-center md:justify-start hover:text-blue-400 transition-colors">
-                            <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20 2H4C2.9 2 2 2.9 2 4V20C2 21.1 2.9 22 4 22H20C21.1 22 22 21.1 22 20V4C22 2.9 21.1 2 20 2ZM8 6H16V8H8V6ZM8 10H16V12H8V10ZM8 14H16V16H8V14Z"/>
-                            </svg>
-                            +7 (777) 777-77-77
-                        </p>
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <p class="review-text">"Заказывал дверь модели Премиум. Очень доволен качеством и скоростью установки. Дверь отлично вписалась в интерьер и прекрасно держит тепло и не пропускает шум. Рекомендую!"</p>
+                    <div class="review-author">
+                        <img src="/api/placeholder/50/50" alt="Александр" class="author-avatar">
+                        <div>
+                            <div class="author-name">Александр</div>
+                            <div>Москва</div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Социальные сети -->
-                <div class="text-center hover-up">
-                    <h3 class="text-2xl font-semibold mb-6 gradient-text">Мы в соцсетях</h3>
-                    <div class="flex justify-center space-x-6">
-                        <!-- Instagram с анимацией -->
-                        <a href="https://www.instagram.com/adik_oow/" class="transform hover:scale-110 transition-all hover:text-pink-500">
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <!-- Telegram с анимацией -->
-                        <a href="https://t.me/Zadrot_ik" class="transform hover:scale-110 transition-all hover:text-blue-400">
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
-                            </svg>
-                        </a>
-                        <!-- WhatsApp с анимацией -->
-                        <a href="https://wa.me/77786484486?text=Привет,%20мне%20нужна%20консультация" class="transform hover:scale-110 transition-all hover:text-green-500">
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                            </svg>
-                        </a>
+                <div class="review-card">
+                    <p class="review-text">"Долго выбирала дверь для квартиры. Менеджер помог определиться с выбором, подробно рассказал о всех преимуществах разных моделей. Установили быстро и качественно, даже убрали за собой мусор. Большое спасибо!"</p>
+                    <div class="review-author">
+                        <img src="/api/placeholder/50/50" alt="Елена" class="author-avatar">
+                        <div>
+                            <div class="author-name">Елена</div>
+                            <div>Подольск</div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Адрес -->
-                <div class="text-center md:text-right hover-up">
-                    <h3 class="text-2xl font-semibold mb-6 gradient-text">Адрес</h3>
-                    <p class="hover:text-blue-400 transition-colors">Республика Казахстан</p>
-                    <p class="hover:text-blue-400 transition-colors">г. Алматы, ул. Абая 150</p>
-                    <p class="hover:text-blue-400 transition-colors">БЦ "Кристалл", офис 509</p>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Свяжитесь с нами</h3>
+                    <ul class="contact-details">
+                        <li>
+                            <i>📞</i>
+                            <div>
+                                <div>Телефон:</div>
+                                <div>+7 (495) 123-45-67</div>
+                            </div>
+                        </li>
+                        <li>
+                            <i>✉️</i>
+                            <div>
+                                <div>Email:</div>
+                                <div>info@premium-doors.ru</div>
+                            </div>
+                        </li>
+                        <li>
+                            <i>🏢</i>
+                            <div>
+                                <div>Адрес:</div>
+                                <div>г. Москва, ул. Примерная, д. 10, офис 100</div>
+                            </div>
+                        </li>
+                        <li>
+                            <i>⏱️</i>
+                            <div>
+                                <div>Режим работы:</div>
+                                <div>Пн-Пт: 9:00 - 20:00, Сб-Вс: 10:00 - 18:00</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <h3>Заказать звонок</h3>
+                    <form>
+                        <div style="margin-bottom: 15px;">
+                            <input type="text" placeholder="Ваше имя" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <input type="tel" placeholder="Ваш телефон" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <button type="submit" class="button" style="width: 100%;">Отправить</button>
+                    </form>
+                </div>
+                <div class="contact-map">
+                    <img src="/api/placeholder/600/400" alt="Карта" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Разделительная линия с градиентом -->
-            <div class="my-8 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
-
-            <!-- Копирайт -->
-            <div class="text-center text-gray-400">
-                <p>© 2025 WebStudio. Все права защищены.</p>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">Премиум<span>Двери</span></div>
+                    <p>Качественные металлические двери от производителя с доставкой и установкой в Москве и Московской области.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Каталог</h3>
+                    <ul>
+                        <li><a href="#">Входные двери</a></li>
+                        <li><a href="#">Межкомнатные двери</a></li>
+                        <li><a href="#">Противопожарные двери</a></li>
+                        <li><a href="#">Двери для квартиры</a></li>
+                        <li><a href="#">Двери для частного дома</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Информация</h3>
+                    <ul>
+                        <li><a href="#about">О компании</a></li>
+                        <li><a href="#process">Как заказать</a></li>
+                        <li><a href="#reviews">Отзывы</a></li>
+                        <li><a href="#">Доставка и установка</a></li>
+                        <li><a href="#">Гарантия</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="#contact">Адрес и телефон</a></li>
+                        <li><a href="#">Написать нам</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 ПремиумДвери. Все права защищены.</p>
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript -->
     <script>
-        // Background Slider functionality
-        function startSlider() {
-            const slides = document.querySelectorAll('.slide');
-            let currentSlide = 0;
-
-            function nextSlide() {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             }
+        });
 
-            // Change slide every 3 seconds
-            setInterval(nextSlide, 3000);
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Category Buttons
+        const categoryButtons = document.querySelectorAll('.category-button');
+        categoryButtons.forEach(button => {
+            document.addEventListener('DOMContentLoaded', function() {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                // Here you would normally filter products
+                // For demo purposes we'll just alert the category
+                alert('Категория: ' + this.textContent);
+            });
+        });
+
+        // Simple Form Validation
+        const contactForm = document.querySelector('.contact-info form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const nameInput = this.querySelector('input[type="text"]');
+                const phoneInput = this.querySelector('input[type="tel"]');
+
+                if (!nameInput.value.trim()) {
+                    alert('Пожалуйста, введите ваше имя');
+                    nameInput.focus();
+                    return;
+                }
+
+                if (!phoneInput.value.trim()) {
+                    alert('Пожалуйста, введите номер телефона');
+                    phoneInput.focus();
+                    return;
+                }
+
+                // Simple phone validation
+                const phonePattern = /^\+?[0-9\s\-\(\)]{10,20}$/;
+                if (!phonePattern.test(phoneInput.value)) {
+                    alert('Пожалуйста, введите корректный номер телефона');
+                    phoneInput.focus();
+                    return;
+                }
+
+                alert('Спасибо! Мы перезвоним вам в ближайшее время.');
+                this.reset();
+            });
         }
 
-        // Start the slider when the page loads
-        window.addEventListener('load', startSlider);
+        // Mobile Menu Toggle
+        function setupMobileMenu() {
+            const header = document.querySelector('header');
+            const navMenu = document.querySelector('.nav-menu');
 
-        // Previous GSAP animations remain the same
-        gsap.registerPlugin(ScrollTrigger);
+            // Create mobile menu button
+            const mobileMenuBtn = document.createElement('div');
+            mobileMenuBtn.className = 'mobile-menu-btn';
+            mobileMenuBtn.innerHTML = '☰';
+            mobileMenuBtn.style.display = 'none';
+            mobileMenuBtn.style.fontSize = '24px';
+            mobileMenuBtn.style.cursor = 'pointer';
+            mobileMenuBtn.style.padding = '10px';
 
-        gsap.from(".service-card", {
-            scrollTrigger: {
-                trigger: ".services",
-                start: "top center"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2
-        });
+            // Insert it before nav
+            header.querySelector('.container').appendChild(mobileMenuBtn);
 
-        gsap.from(".portfolio-item", {
-            scrollTrigger: {
-                trigger: ".portfolio",
-                start: "top center"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2
-        });
-
-        gsap.from(".pricing-card", {
-            scrollTrigger: {
-                trigger: ".pricing",
-                start: "top center"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2
-        });
-    </script>
-    <script>
-        // Background Slider functionality
-        function startSlider() {
-            const slides = document.querySelectorAll('.slide');
-            let currentSlide = 0;
-
-            function nextSlide() {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
+            // Handle resize
+            function handleResize() {
+                if (window.innerWidth <= 768) {
+                    mobileMenuBtn.style.display = 'block';
+                    navMenu.style.display = 'none';
+                    navMenu.style.flexDirection = 'column';
+                } else {
+                    mobileMenuBtn.style.display = 'none';
+                    navMenu.style.display = 'flex';
+                    navMenu.style.flexDirection = 'row';
+                }
             }
 
-            // Change slide every 3 seconds
-            setInterval(nextSlide, 3000);
+            // Toggle menu
+            mobileMenuBtn.addEventListener('click', function() {
+                if (navMenu.style.display === 'none' || navMenu.style.display === '') {
+                    navMenu.style.display = 'flex';
+                    navMenu.style.flexDirection = 'column';
+                } else {
+                    navMenu.style.display = 'none';
+                }
+            });
+
+            // Initial call and event listener
+            handleResize();
+            window.addEventListener('resize', handleResize);
         }
 
-        // Start the slider when the page loads
-        window.addEventListener('load', startSlider);
+        // Call mobile menu setup
+        setupMobileMenu();
 
-        // GSAP animations
-        gsap.registerPlugin(ScrollTrigger);
+        // Product Details Modal
+        function showProductDetails(model) {
+            // Create modal container
+            const modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            modal.style.zIndex = '1000';
+            modal.style.display = 'flex';
+            modal.style.justifyContent = 'center';
+            modal.style.alignItems = 'center';
 
-        gsap.from(".service-card", {
-            scrollTrigger: {
-                trigger: ".services",
-                start: "top center"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2
-        });
+            // Create modal content
+            const modalContent = document.createElement('div');
+            modalContent.style.backgroundColor = 'white';
+            modalContent.style.padding = '30px';
+            modalContent.style.borderRadius = '5px';
+            modalContent.style.maxWidth = '800px';
+            modalContent.style.width = '90%';
+            modalContent.style.maxHeight = '90vh';
+            modalContent.style.overflow = 'auto';
+            modalContent.style.position = 'relative';
 
-        gsap.from(".portfolio-item", {
-                scrollTrigger: {
-                    trigger: ".portfolio",
-                    start: "top center"
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.2
+            // Close button
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = '×';
+            closeBtn.style.position = 'absolute';
+            closeBtn.style.top = '10px';
+            closeBtn.style.right = '15px';
+            closeBtn.style.border = 'none';
+            closeBtn.style.background = 'none';
+            closeBtn.style.fontSize = '30px';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.color = var(--primary-color);
+            closeBtn.addEventListener('click', () => document.body.removeChild(modal));
+
+            // Product title
+            const title = document.createElement('h2');
+            title.textContent = 'Модель "' + model + '"';
+            title.style.marginBottom = '20px';
+            title.style.color = var(--primary-color);
+
+            // Product images
+            const imageContainer = document.createElement('div');
+            imageContainer.style.display = 'flex';
+            imageContainer.style.gap = '10px';
+            imageContainer.style.marginBottom = '20px';
+            imageContainer.style.overflowX = 'auto';
+
+            for (let i = 0; i < 3; i++) {
+                const img = document.createElement('img');
+                img.src = '/api/placeholder/300/250';
+                img.alt = 'Дверь ' + model + ' вид ' + (i + 1);
+                img.style.width = '250px';
+                img.style.height = '200px';
+                img.style.objectFit = 'cover';
+                img.style.borderRadius = '5px';
+                img.style.cursor = 'pointer';
+
+                img.addEventListener('click', function() {
+                    const mainImage = document.getElementById('mainProductImage');
+                    mainImage.src = this.src;
+                });
+
+                imageContainer.appendChild(img);
+            }
+
+            // Main image
+            const mainImage = document.createElement('img');
+            mainImage.id = 'mainProductImage';
+            mainImage.src = '/api/placeholder/500/400';
+            mainImage.alt = 'Дверь ' + model;
+            mainImage.style.width = '100%';
+            mainImage.style.height = 'auto';
+            mainImage.style.borderRadius = '5px';
+            mainImage.style.marginBottom = '20px';
+
+            // Product description
+            const description = document.createElement('div');
+            description.innerHTML = getProductDescription(model);
+
+            // Price section
+            const priceSection = document.createElement('div');
+            priceSection.style.display = 'flex';
+            priceSection.style.justifyContent = 'space-between';
+            priceSection.style.alignItems = 'center';
+            priceSection.style.marginTop = '30px';
+            priceSection.style.padding = '15px';
+            priceSection.style.backgroundColor = var(--light-color);
+            priceSection.style.borderRadius = '5px';
+
+            const priceInfo = document.createElement('div');
+
+            const currentPrice = document.createElement('div');
+            currentPrice.textContent = getProductPrice(model);
+            currentPrice.style.fontSize = '28px';
+            currentPrice.style.fontWeight = '700';
+            currentPrice.style.color = var(--primary-color);
+
+            const oldPrice = document.createElement('div');
+            oldPrice.textContent = getProductOldPrice(model);
+            oldPrice.style.textDecoration = 'line-through';
+            oldPrice.style.color = '#888';
+
+            priceInfo.appendChild(currentPrice);
+            priceInfo.appendChild(oldPrice);
+
+            const orderButton = document.createElement('button');
+            orderButton.textContent = 'Заказать';
+            orderButton.className = 'button';
+            orderButton.style.padding = '12px 30px';
+            orderButton.style.fontSize = '18px';
+
+            orderButton.addEventListener('click', function() {
+                alert('Спасибо за заказ! Наш менеджер свяжется с вами в ближайшее время.');
+                document.body.removeChild(modal);
             });
 
-            gsap.from(".pricing-card", {
-                scrollTrigger: {
-                    trigger: ".pricing",
-                    start: "top center"
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.2
-            });
+            priceSection.appendChild(priceInfo);
+            priceSection.appendChild(orderButton);
 
-            // Add animation for contact form
-            gsap.from(".contact-form", {
-                scrollTrigger: {
-                    trigger: ".contact",
-                    start: "top center"
-                },
-                y: 30,
-                opacity: 0,
-                duration: 1
+            // Append all elements to modal content
+            modalContent.appendChild(closeBtn);
+            modalContent.appendChild(title);
+            modalContent.appendChild(mainImage);
+            modalContent.appendChild(imageContainer);
+            modalContent.appendChild(description);
+            modalContent.appendChild(priceSection);
+
+            // Append modal content to modal
+            modal.appendChild(modalContent);
+
+            // Add modal to body
+            document.body.appendChild(modal);
+
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    document.body.removeChild(modal);
+                }
             });
-        });
+        }
+
+        // Helper functions for product details
+        function getProductDescription(model) {
+            const descriptions = {
+                'Стандарт': `
+                    <h3>Описание</h3>
+                    <p>Надежная стальная дверь с шумоизоляцией и двумя контурами уплотнения. Идеальное сочетание цены и качества.</p>
+
+                    <h3>Характеристики</h3>
+                    <ul>
+                        <li>Толщина металла: 1.5 мм</li>
+                        <li>Количество петель: 2</li>
+                        <li>Контуры уплотнения: 2</li>
+                        <li>Замки: 2 (основной и дополнительный)</li>
+                        <li>Внешняя отделка: порошковое напыление</li>
+                        <li>Внутренняя отделка: МДФ панель</li>
+                        <li>Утеплитель: минеральная вата</li>
+                    </ul>
+                `,
+                'Комфорт': `
+                    <h3>Описание</h3>
+                    <p>Утепленная стальная дверь с повышенной шумоизоляцией и тремя контурами уплотнения. Прекрасный выбор для городской квартиры.</p>
+
+                    <h3>Характеристики</h3>
+                    <ul>
+                        <li>Толщина металла: 1.8 мм</li>
+                        <li>Количество петель: 3</li>
+                        <li>Контуры уплотнения: 3</li>
+                        <li>Замки: 2 (основной и дополнительный)</li>
+                        <li>Внешняя отделка: порошковое напыление</li>
+                        <li>Внутренняя отделка: МДФ панель (широкий выбор цветов)</li>
+                        <li>Утеплитель: минеральная вата повышенной плотности</li>
+                    </ul>
+                `,
+                'Премиум': `
+                    <h3>Описание</h3>
+                    <p>Премиальная стальная дверь с терморазрывом, четырьмя контурами уплотнения и бронированием. Обеспечивает высочайший уровень безопасности и комфорта.</p>
+
+                    <h3>Характеристики</h3>
+                    <ul>
+                        <li>Толщина металла: 2.0 мм</li>
+                        <li>Количество петель: 3 (скрытые)</li>
+                        <li>Контуры уплотнения: 4</li>
+                        <li>Замки: 3 (основной, дополнительный и скрытый)</li>
+                        <li>Внешняя отделка: порошковое напыление премиум-класса</li>
+                        <li>Внутренняя отделка: МДФ панель премиум-класса</li>
+                        <li>Утеплитель: комбинированный (минеральная вата + пенополиуретан)</li>
+                        <li>Терморазрыв: есть</li>
+                        <li>Бронирование: есть</li>
+                    </ul>
+                `,
+                'Люкс': `
+                    <h3>Описание</h3>
+                    <p>Эксклюзивная модель с отделкой премиум-класса и усиленной системой безопасности. Подходит для особо требовательных клиентов.</p>
+
+                    <h3>Характеристики</h3>
+                    <ul>
+                        <li>Толщина металла: 3.0 мм</li>
+                        <li>Количество петель: 4 (скрытые)</li>
+                        <li>Контуры уплотнения: 4</li>
+                        <li>Замки: 4 (2 основных, дополнительный и скрытый)</li>
+                        <li>Внешняя отделка: на выбор (массив дерева, натуральный шпон, эксклюзивное порошковое напыление)</li>
+                        <li>Внутренняя отделка: премиальные материалы на выбор</li>
+                        <li>Утеплитель: многослойная система</li>
+                        <li>Терморазрыв: улучшенный</li>
+                        <li>Бронирование: усиленное</li>
+                        <li>Дополнительно: электронная система доступа (опционально)</li>
+                    </ul>
+                `,
+                'Эконом': `
+                    <h3>Описание</h3>
+                    <p>Практичная стальная дверь с базовой комплектацией по доступной цене. Отличное решение для технических помещений.</p>
+
+                    <h3>Характеристики</h3>
+                    <ul>
+                        <li>Толщина металла: 1.2 мм</li>
+                        <li>Количество петель: 2</li>
+                        <li>Контуры уплотнения: 1</li>
+                        <li>Замки: 1 (основной)</li>
+                        <li>Внешняя отделка: порошковое напыление</li>
+                        <li>Внутренняя отделка: порошковое напыление</li>
+                        <li>Утеплитель: базовый</li>
+                    </ul>
+                `,
+                'Классик': `
+                    <h3>Описание</h3>
+                    <p>Классическая стальная дверь с МДФ отделкой и хорошей шумоизоляцией. Сочетает в себе элегантный дизайн и надежность.</p>
+
+                    <h3>Характеристики</h3>
+                    <ul>
+                        <li>Толщина металла: 1.5 мм</li>
+                        <li>Количество петель: 2</li>
+                        <li>Контуры уплотнения: 2</li>
+                        <li>Замки: 2 (основной и дополнительный)</li>
+                        <li>Внешняя отделка: МДФ панель</li>
+                        <li>Внутренняя отделка: МДФ панель</li>
+                        <li>Утеплитель: минеральная вата</li>
+                    </ul>
+                `
+            };
+
+            return descriptions[model] || '<p>Описание временно недоступно.</p>';
+        }
+
+        function getProductPrice(model) {
+            const prices = {
+                'Стандарт': '19 990 ₽',
+                'Комфорт': '24 990 ₽',
+                'Премиум': '34 990 ₽',
+                'Люкс': '44 990 ₽',
+                'Эконом': '14 990 ₽',
+                'Классик': '21 990 ₽'
+            };
+
+            return prices[model] || '0 ₽';
+        }
+
+        function getProductOldPrice(model) {
+            const oldPrices = {
+                'Стандарт': '24 990 ₽',
+                'Комфорт': '29 990 ₽',
+                'Премиум': '39 990 ₽',
+                'Люкс': '49 990 ₽',
+                'Эконом': '17 990 ₽',
+                'Классик': '26 990 ₽'
+            };
+
+            return oldPrices[model] || '0 ₽';
+        }
     </script>
-</body>
-</html>
